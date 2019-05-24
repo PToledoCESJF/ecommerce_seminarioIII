@@ -1,0 +1,35 @@
+table {
+	height: 500px;
+}
+
+fieldset {
+
+	height: 500px;
+}
+
+.form-group input { 
+
+	margin-bottom: 0 !important; 
+} 
+
+
+.tamanhoFixo {
+
+	resize: horizontal;
+	padding: 2px;
+}
+
+td {
+	padding: 2px !important;
+}
+
+/* estilo pagina login */
+.form-signin {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
+
+
+}
+
