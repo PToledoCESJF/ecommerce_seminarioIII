@@ -4,10 +4,24 @@ require_once './config/Global.php';
 
 class UsuarioController{
     
+    public static function consultaUsuario($email, $senha){
+        $usuarioLista = self::listar();
+        
+        foreach ($usuarioLista as $usuario){
+            if($usuario['email'] === $email && $usuario['senha'] === $senha){
+                session_destroy();
+                session_start();
+                $_SESSION['usuario_nome'] = $usuario['nome'];
+                $_SESSION['usuario_tipo'] = $usuario['tipo'];
+                $_SESSION['usuario_logado'] = TRUE;
+                return TRUE;
+            }
+        }
+    }
+    
     public static function carregar($idUsuario, $nome, $email, $senha, $telefone, 
                     $cpf, $tipo, $dataNascimento) {
         
-        //$senhaMd5 = md5($senha);
         $usuario = new Usuario($idUsuario, $nome, $email, $senha, $telefone, 
                 $cpf, $tipo, $dataNascimento);
         self::salvar($usuario);

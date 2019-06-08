@@ -3,6 +3,14 @@
 class Template{
     
     public static function header(){
+        
+        session_start();
+        
+        if(!isset($_SESSION['usuario_logado'])){
+            $_SESSION['usuario_nome'] = 'Visitante';
+            $_SESSION['usuario_tipo'] = 0;
+        }
+        
         echo "
 
             <!DOCTYPE html>
@@ -15,20 +23,20 @@ class Template{
               <meta name='description' content=''>
               <meta name='author' content=''>
 
-              <title>Modern Business - Start Bootstrap Template</title>
+              <title>Black Store</title>
 
               <!-- Bootstrap core CSS -->
-              <link href='./assests/css/bootstrap.min.css' rel='stylesheet'>
+              <link href='./assets/css/bootstrap.min.css' rel='stylesheet'>
 
               <!-- Custom styles for this template -->
-              <link href='./assests/css/modern-business.css' rel='stylesheet'>
+              <link href='./assets/css/modern-business.css' rel='stylesheet'>
 
     </head>
     
     <!-- Navigation -->
               <nav class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
                 <div class='container'>
-                  <a class='navbar-brand' href='index.php'>Start Bootstrap</a>
+                  <a class='navbar-brand' href='index.php'>Black Store</a>
                   <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
                     <span class='navbar-toggler-icon'></span>
                   </button>
