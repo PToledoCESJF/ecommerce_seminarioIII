@@ -3,7 +3,7 @@
 require_once './config/Global.php';
 
 $produtoLista = ProdutoController::listar();
-$produtoExemplo = ProdutoController::buscarPorId();
+
 
 Template::header();
 
@@ -107,7 +107,9 @@ Template::header();
       ?>
       <div class='col-lg-4 col-sm-6 portfolio-item'>
         <div class='card h-100'>
-          <a href='paginaproduto.php?id_produto=<?=$p['id_produto']?>'><img class='card-img-top' src='./assets/img/<?php echo $produtoExemplo->getImagem($p['id_produto']); ?>' alt=''>
+          <a href='paginaproduto.php?id_produto=<?=$p['id_produto']?>'>
+              <img class='card-img-top' src='./assets/img/
+                  <?php echo ProdutoController::buscarPorId($p['id_produto']) ?>' alt=''>
           <div class='card-body'>
             <h4 class='card-title'>
               <?= $p['nome_produto']; ?>

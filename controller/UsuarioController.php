@@ -9,8 +9,8 @@ class UsuarioController{
         
         foreach ($usuarioLista as $usuario){
             if($usuario['email'] === $email && $usuario['senha'] === $senha){
-                session_destroy();
-                session_start();
+//                session_destroy();
+//                session_start();
                 $_SESSION['usuario_nome'] = $usuario['nome'];
                 $_SESSION['usuario_tipo'] = $usuario['tipo'];
                 $_SESSION['usuario_logado'] = TRUE;

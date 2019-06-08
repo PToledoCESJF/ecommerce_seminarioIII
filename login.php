@@ -1,6 +1,5 @@
 <?php
 require_once './config/Global.php';
-Template::header();
 
     $method = filter_input(INPUT_POST, 'metodo');
     $origem = filter_input(INPUT_POST, 'origem');

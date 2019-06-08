@@ -4,29 +4,30 @@ require_once './config/Global.php';
 
 try {
 
+    $produto = ProdutoController::carregarVazio();
+    
     $method = filter_input(INPUT_POST, 'metodo');
+    $idProduto = filter_input(INPUT_POST, 'id_produto');
+    $produtoLista = ProdutoController::listar();
+    $categoriaLista = CategoriaController::listar();
 
     if($method === 'salvar' ){
-        $idProduto = filter_input(INPUT_POST, 'id_produto');
         $nomeProduto = filter_input(INPUT_POST, 'nome_produto');
         $valor = filter_input(INPUT_POST, 'valor');
         $estoque = filter_input(INPUT_POST, 'estoque');
         $descricao = filter_input(INPUT_POST, 'descricao');
         $imagem = filter_input(INPUT_POST, 'imagem');
         $idCategoria = filter_input(INPUT_POST, 'id_categoria');
+        
         ProdutoController::carregar($idProduto, $nomeProduto, $valor, 
                 $estoque, $descricao, $imagem, $idCategoria);
     }elseif($method === 'excluir' ){
         $idProduto = filter_input(INPUT_POST, 'id_produto');
         ProdutoController::excluir($idProduto);
     }elseif ($method === 'buscar') {
-        $produto = ProdutoController::buscarPorId(filter_input(INPUT_POST, 'id_produto'));
-    } else {
-        $produto = ProdutoController::carregarVazio();
-    }
+        $produto = ProdutoController::buscarPorId($idProduto);
+    } 
 
-    $produtoLista = ProdutoController::listar();
-    $categoriaLista = CategoriaController::listar();
 } catch (Exception $exc) {
     Erro::trataErro($exc);
 }
