@@ -69,4 +69,24 @@ class ProdutoDao{
             Erro::trataErro($exc);
         }
     }
+    
+     public static function buscarPorNome($nomeDigitado){
+        /* $NOMEDIGITADO = variável que recebe o texto digitado pelo usuário*/
+        try {
+            $nomeDigitadoDois = "%" . $nomeDigitado . "%";
+            $conexao = Conexao::conectar();
+            $queryBuscaPorNome = "SELECT * FROM tb_produto WHERE nome_produto like :nome";
+            $stmt = $conexao->prepare($queryBuscaPorNome);
+            $stmt->bindValue(':nome', $nomeDigitadoDois);
+            $stmt->execute();
+            $rees = $stmt->fetchAll();
+            if ($rees->rowCount()==0){
+                return "Nenhum Produto encontrado com '$nomeDigitado'";
+            }else{
+                return $rees;
+            }
+        } catch (Exception $e) {
+            Erro::trataErro($exc);
+        }        
+    }
 }

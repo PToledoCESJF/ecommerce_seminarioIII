@@ -57,4 +57,14 @@ class ProdutoController{
             Erro::trataErro($exc);
         }
     }
+    
+    public static function buscarPorNome($nomeDigitado){
+        try {
+          return ProdutoDao::buscarPorNome($nomeDigitado);
+                
+        } catch (Exception $e) {
+            Erro::trataErro($e);
+        }
+        
+    }
 }
